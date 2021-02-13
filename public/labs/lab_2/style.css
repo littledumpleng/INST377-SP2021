@@ -64,7 +64,7 @@ body > * {
   padding: 1%;
 }
 
-.main, .header, nav, .article, .aside, .footer, section {
+.main, .header, .nav, .article, .aside, .footer, section {
   background-color: rgba(0,255,0,0.5);
   padding: 1%;
 }
@@ -74,26 +74,30 @@ h1 {
   text-transform: uppercase;
 }
 
-.header img {
+/* used */
+.header img { 
   display: block;
   height: 60px;
   padding-top: 20.15px;
 }
 
+/* used */
 nav {
   height: 50px;
   flex: 100%;
   display: flex;
 }
 
-nav ul {
+/* used, may not be right */
+nav ul { 
   padding: 0;
   list-style-type: none;
   flex: 2;
   display: flex;
 }
 
-nav li {
+/* used, may not be right */
+nav li { 
   display: inline;
   text-align: center;
   flex: 1;
@@ -136,6 +140,7 @@ nav a, nav span {
   height: auto;
 }
 
-.footer {
+/* used */
+.footer { 
   margin-top: 10px;
 }
