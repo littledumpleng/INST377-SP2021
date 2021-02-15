@@ -1,34 +1,39 @@
 /* || General setup */
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
 html {
   font-size: 10px;
-
 }
 
 body {
   width: 70%;
   min-width: 800px;
   margin: 0 auto;
-  background-color: #6091C3;
+  background-color: #6091c3;
 }
 
 /* || typography */
 
-h1, h2, h3 {
-  font-family: 'Cinzel Decorative', cursive;
+h1,
+h2,
+h3 {
+  font-family: "Cinzel Decorative", cursive;
   color: #2a2a2a;
 }
 
-p, input, li {
-  font-family: 'Roboto Condensed', sans-serif;
+p,
+input,
+li {
+  font-family: "Roboto Condensed", sans-serif;
   color: #2a2a2a;
 }
 
+/* why isn't this overwriting the last h1 line */
 h1 {
   font-size: 4rem;
   text-align: center;
@@ -46,13 +51,15 @@ h3 {
   font-size: 2.2rem;
 }
 
-p, li {
+p,
+li {
   font-size: 1.6rem;
   line-height: 1.5;
 }
 
 /* || header layout */
 
+/* used */
 .header {
   margin-bottom: 10px;
   display: flex;
@@ -64,18 +71,26 @@ body > * {
   padding: 1%;
 }
 
-.main, .header, .nav, .article, .aside, .footer, section {
-  background-color: rgba(0,255,0,0.5);
+/* used .nav */
+.main,
+.header,
+.nav,
+.article,
+.aside,
+.footer,
+section {
+  background-color: rgba(0, 255, 0, 0.5);
   padding: 1%;
 }
 
+/* why isn't this working */
 h1 {
   flex: 5;
   text-transform: uppercase;
 }
 
 /* used */
-.header img { 
+.header img {
   display: block;
   height: 60px;
   padding-top: 20.15px;
@@ -89,7 +104,7 @@ nav {
 }
 
 /* used, may not be right */
-nav ul { 
+nav ul {
   padding: 0;
   list-style-type: none;
   flex: 2;
@@ -97,13 +112,14 @@ nav ul {
 }
 
 /* used, may not be right */
-nav li { 
+nav li {
   display: inline;
   text-align: center;
   flex: 1;
 }
 
-nav a, nav span {
+nav a,
+nav span {
   display: inline-block;
   font-size: 2rem;
   height: 3rem;
@@ -111,7 +127,6 @@ nav a, nav span {
   text-transform: uppercase;
   text-decoration: none;
   color: black;
-
 }
 
 /* || main layout */
@@ -120,27 +135,32 @@ nav a, nav span {
   display: flex;
 }
 
-.article, .section {
+/* unsure */
+.article,
+.section {
   flex: 4;
 }
 
+/* unsure */
 .aside {
   display: flex;
   flex-flow: row wrap;
   flex: 2;
 }
 
+/* unsure */
 .aside a {
   display: flex;
   flex-basis: 50%;
 }
 
+/* unsure, used, may not be right */
 .aside img {
   width: 100%;
   height: auto;
 }
 
 /* used */
-.footer { 
+.footer {
   margin-top: 10px;
 }
