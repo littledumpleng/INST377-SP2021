@@ -3,7 +3,7 @@ describe('Lab 3', () => {
     cy.fixture('test_values').then((json) => {
       const labUrl = `${json.test_context || ''}/lab_3/`;
       cy.visit(labUrl); // change URL to match your dev URL
-      cy.htmlvalidate();
+      cy.htmlvalidate(); //is it valid to the w3 standards?
     });
   });
 
