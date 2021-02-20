@@ -28,40 +28,34 @@ body {
   overflow: hidden;
 }
 
-.window ul{
-    height: 130px;
-    width: 9999px;
-    margin:0;
-    padding:0;
-    list-style: none; /*shorthand property for all list properties*/
+.window ul {
+  height: 130px;
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none; /*shorthand property for all list properties*/
+  transition: margin-left 250ms; /*allows you to change property values smoothly when the specified CSS property changes value*/
+  /* didn't use font-size: 0; */
 }
-
-
-/* .gallery ul {
-    height: 130px;
-    width: 9999px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    transition: margin-left 250ms;
-    /* remove white-space between inline-block'ed li */
-    /* http://davidwalsh.name/remove-whitespace-inline-block */
-    font-size: 0;
-  } */
 
 .window li {
   display: inline-block; /*horizontal, removes bullets*/
 }
 
 .arrow {
-  position: absolute;
+  position: absolute; /*arrow element is positioned relative to its normal position - overlaps*/
   top: 60px;
   padding: 0;
-  background: #ddd;
+  background: blanchedalmond;
   border-radius: 15px;
-  border: 1px solid gray;
+  border: 1px solid goldenrod;
   font-size: 24px;
   line-height: 24px;
-  color: #444;
+  color: goldenrod;
   display: block;
+}
+
+.arrow:hover {
+  background: mintcream;
+  cursor: pointer;
 }
