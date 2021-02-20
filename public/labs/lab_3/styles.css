@@ -15,6 +15,7 @@ body {
   border-width: thick;
   border-radius: 15px; /*radius of element's corners*/
   background: FloralWhite;
+  margin: auto;
 }
 
 .carousel img {
@@ -40,6 +41,14 @@ body {
 
 .window li {
   display: inline-block; /*horizontal, removes bullets*/
+}
+
+.left {
+  left: 7px; /*higher values move to the right*/
+}
+
+.right {
+  right: 7px;
 }
 
 .arrow {
