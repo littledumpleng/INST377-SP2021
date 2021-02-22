@@ -9,7 +9,7 @@ body {
 
 .carousel {
   position: relative;
-  width: 400px;
+  width: 398px;
   padding: 10px 40px;
   border: 1px dotted tan;
   border-width: thick;
@@ -25,7 +25,7 @@ body {
 }
 
 .window {
-  width: 400px;
+  width: 390px;
   overflow: hidden;
 }
 
