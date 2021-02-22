@@ -1,4 +1,4 @@
-const listContainer = document.querySelector('images')
+const listContainer = document.querySelector('.images') /*selecting all images in code*/
 
 function shiftLeft(){
     const lastThree = Array.from(listContainer.children).slice(4,7).reverse();
@@ -12,7 +12,7 @@ function shiftRight(){
     const firstThree = Array.from(listContainer.children).slice(0,3);
     firstThree.forEach((element) => {
         listContainer.removeChild(element);
-        listContainer.appendChild(element);
+        listContainer.appendChild(element); 
     })
 }
 
