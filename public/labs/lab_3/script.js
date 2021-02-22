@@ -1,30 +1,28 @@
-/* configuration */
+const listContainer = document.querySelector('.images') /*selecting all images in code*/
 
-console.log('hello'); /*console.log() shows up in console, alert() shows up in browser - use to check javascript connection*/
+function shiftLeft(){
+    const lastThree = Array.from(listContainer.children).slice(4,7).reverse();
+    lastThree.forEach((element) => { /* removes the first child and then adds one */
+        listContainer.removeChild(element);
+        listContainer.insertBefore(element, listContainer.children[0]);
+    })
+}
 
+function shiftRight(){
+    const firstThree = Array.from(listContainer.children).slice(0,3); /* saves the first three children as firstThree */
+    firstThree.forEach((element) => { /* takes first three children, removes one child and adds another */
+        listContainer.removeChild(element);
+        listContainer.appendChild(element); 
+    })
+}
 
-const carousel = document.body.querySelector('.carousel');
+function onLoadOfPage(){
+    document.querySelector("button.arrow.left").addEventListener('click', (event) =>{
+        shiftLeft();
+    });
+    document.querySelector("button.arrow.right").addEventListener('click', (event) =>{
+        shiftRight();
+    })
+}
 
-let width = 130; // image width
-let count = 3; // visible images count
-
-let list = carousel.querySelector('ul');
-let listElems = carousel.querySelectorAll('li');
-
-let position = 0; // ribbon scroll position
-
-carousel.querySelector('.left').onclick = function() {
-  // shift left
-  position += width * count;
-  // can't move to the left too much, end of images
-  position = Math.min(position, 0)
-  list.style.marginLeft = position + 'px';
-};
-
-carousel.querySelector('.right').onclick = function() {
-  // shift right
-  position -= width * count;
-  // can only shift the ribbbon for (total ribbon length - visible count) images
-  position = Math.max(position, -width * (listElems.length - count));
-  list.style.marginLeft = position + 'px';
-};
+window.onload = onLoadOfPage;
