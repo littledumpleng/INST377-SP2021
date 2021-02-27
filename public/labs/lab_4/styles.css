@@ -1,5 +1,4 @@
 body {
-  /* font: normal 1.2em "Fira Sans", sans-serif; normal, size, style */
   font: normal 1.2em "Monaco", "Courier New", "monospace"; /*several fonts listed as fallbacks, then generic family name*/
   background: rgb(250, 185, 129);
   color: #fff;
