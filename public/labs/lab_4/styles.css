@@ -1,6 +1,6 @@
 body {
   font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
-  background: #3aafab;
+  background: rgb(255, 200, 153);
   color: #fff;
   padding: 50px 0;
 }
@@ -32,7 +32,6 @@ body {
 
 /* submit button */
 .flex-outer li button {
-  margin-left: auto;
   padding: 8px 16px;
   border: none;
   background: #333;
@@ -40,6 +39,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.09em;
   border-radius: 2px;
+  /* margin-left: auto; goes to the right */
 }
 
 /* set the width of the flex items (<li>) that are immediate parents of the checkboxes to 100px */
@@ -49,4 +49,10 @@ body {
 
 .flex-inner {
   justify-content: space-between; /*allows .flex-inner to stretch and align across main-axis. checkboxes and their respective labels achieve a consistent alignment */
+}
+
+h2 {
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 200%;
 }
