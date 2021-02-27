@@ -1,6 +1,7 @@
 body {
-  font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
-  background: rgb(255, 200, 153);
+  /* font: normal 1.2em "Fira Sans", sans-serif; normal, size, style */
+  font: normal 1.2em "Monaco", "Courier New", "monospace"; /*several fonts listed as fallbacks, then generic family name*/
+  background: rgb(250, 185, 129);
   color: #fff;
   padding: 50px 0;
 }
@@ -25,18 +26,14 @@ body {
   flex: 1 0 220px;
 }
 
-/* NOT WORKING - set the width of the flex items which are immediate parents of the checkboxes to 100px */
-.flex-inner li {
-  width: 100px;
-}
-
 /* submit button */
 .flex-outer li button {
   padding: 8px 16px;
   border: none;
-  background: #333;
+  background: rgb(153, 152, 152);
   color: #f2f2f2;
   text-transform: uppercase;
+  font: normal 16px "Monaco", "Courier New", "monospace";
   letter-spacing: 0.09em;
   border-radius: 2px;
   /* margin-left: auto; goes to the right */
@@ -53,6 +50,5 @@ body {
 
 h2 {
   text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 200%;
 }
