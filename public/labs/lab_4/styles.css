@@ -1,33 +1,52 @@
-<form>
-  <ul class="flex-outer"> /* unordered list to group the various form elements */
-    <li>
-      <label for="first-name">First Name</label>
-      <input type="text" id="first-name" placeholder="Enter your first name here">
-    </li>
-    <li>
-      <label for="last-name">Last Name</label>
-      <input type="text" id="last-name" placeholder="Enter your last name here">
-    </li>
-    <li>
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email here">
-    </li>
-    <li>
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" placeholder="Enter your phone here">
-    </li>
-    <li>
-      <label for="message">Message</label>
-      <textarea rows="6" id="message" placeholder="Enter your message here"></textarea>
-    </li>
-    <li>
-      <p>Age</p>
-      <ul class="flex-inner"> /* unordered list to group the checkboxes. 
-        <!-- list items here -->
-      </ul>
-    </li>
-    <li>
-      <button type="submit">Submit</button>
-    </li>
-  </ul>
-</form>
+body {
+  font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
+  background: #3aafab;
+  color: #fff;
+  padding: 50px 0;
+}
+
+/* vertically center the flex items across the cross-axis */
+.flex-outer li,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap; /* items allowed to wrap onto multiple lines */
+  align-items: center;
+}
+
+/* Each label and associated form element are on a single horizontal row when the width of the form totals at least 220px. Otherwise, they're vertical */
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px; /* combines flex-grow, flex-shrink, flex-basis */
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+/* NOT WORKING - set the width of the flex items which are immediate parents of the checkboxes to 100px */
+.flex-inner li {
+  width: 100px;
+}
+
+/* submit button */
+.flex-outer li button {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  background: #333;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  border-radius: 2px;
+}
+
+/* set the width of the flex items (<li>) that are immediate parents of the checkboxes to 100px */
+.flex-inner li {
+  width: 100px;
+}
+
+.flex-inner {
+  justify-content: space-between; /*allows .flex-inner to stretch and align across main-axis. checkboxes and their respective labels achieve a consistent alignment */
+}
