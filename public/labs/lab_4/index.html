@@ -4,37 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lauren's Lab 4</title>
+    <title>Lauren Eng's Lab 4</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h2>Lauren Eng's Lab 4</h2>
-    <form action="/api" method="POST">
+    <h1>Lauren Eng's Lab 4</h1>
+    <form action="/api" method="post">
+      <!-- form action is the endpoint you want to go to -->
       <ul class="flex-outer">
         <!-- unordered list to group the various form elements -->
         <li>
-          <label for="first-name">First Name</label>
-          <input type="text" id="first-name" />
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="First Name" />
         </li>
         <li>
-          <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" />
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="Last Name" />
         </li>
         <li>
           <label for="email">Email</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" name="Email Input" />
         </li>
         <li>
           <label for="phone">Phone</label>
-          <input type="tel" id="phone" />
+          <input type="tel" id="phone" name="Phone Input" />
         </li>
         <li>
           <label for="message">Message</label>
           <textarea
-            rows="6"
+            rows="5"
+            cols="33"
             id="message"
+            name="message"
             placeholder="This is some default message text."
-          ></textarea>
+          >
+          </textarea>
         </li>
         <li>
           <p>Age</p>
@@ -42,24 +46,48 @@
           <ul class="flex-inner">
             <!-- unordered list to group the checkboxes -->
             <li>
-              <input type="checkbox" id="twenty-to-twentynine" />
+              <input
+                type="checkbox"
+                id="twenty-to-twentynine"
+                name="Age Input"
+              />
               <label for="twenty-to-twentynine">18-35</label>
             </li>
             <li>
-              <input type="checkbox" id="thirty-to-thirtynine" />
+              <input
+                type="checkbox"
+                id="thirty-to-thirtynine"
+                name="Age Input"
+              />
               <label for="thirty-to-thirtynine">35-50</label>
             </li>
             <li>
-              <input type="checkbox" id="forty-to-fortynine" />
+              <input type="checkbox" id="forty-to-fortynine" name="Age Input" />
               <label for="forty-to-fortynine">50-65</label>
             </li>
           </ul>
         </li>
         <li>
-          <button type="submit">SUBMIT FORM</button>
+          <button
+            type="submit"
+            formmethod="post"
+            id="submit"
+            name="Submit Button"
+            value="submit"
+          >
+            SUBMIT FORM
+          </button>
         </li>
       </ul>
     </form>
-    <script src="./server.js"></script>
   </body>
 </html>
+
+<!-- type specifies type of button (submit, reset, etc.)-->
+<!--  formmethod specific http method, could be a post or a get -->
+<!-- value is the value the button holds when it's initialized -->
+
+<!-- the badkend references it by name -->
+<!-- what is name attribute vs id attribute -->
+<!-- res.body is response body. also there's req.body
+  for example POST - 'first name': 'Lauren' -->
