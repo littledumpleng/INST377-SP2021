@@ -1,6 +1,9 @@
+/* eslint-disable no-console */
+/* eslint-disable max-len */
+// KEEP
 function mapInit() {
   // follow the Leaflet Getting Started tutorial here
-  const mymap = L.map('mapid').setView([51.505, -0.09], 13); // generating a map instance. L is a global variable
+  const mymap = L.map('mapid').setView([38.9897, -76.9378], 13); // generating a map instance. L is a global variable
 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -10,55 +13,55 @@ function mapInit() {
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoibGl0dGxlZHVtcGxlbmciLCJhIjoiY2tuaTI5NzVpMmM3ZDJ2b281MDRsMWgycSJ9.y2zTyXFqtMhyK7a5KykCTw'
   }).addTo(mymap);
+  console.log('mymap', mymap);
   return mymap;
 }
 
 async function dataHandler(mapObjectFromFunction) {
-  // use your assignment 1 data handling code here
-  // and target mapObjectFromFunction to attach markers
-  console.log('window loaded');
-  const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-  const request = await fetch(endpoint);
-  const restaurant = await request.json();
-  // restaurant is request formatted to json; empty array
-  const search = document.querySelector('#search'); // document is html page
-  const suggestions = document.querySelector('.suggestions');
+  const form = document.querySelector('#search-form');
+  const search = document.querySelector('#search');
+  const targetList = document.querySelector('.target-list');
+  const replyMessage = document.querySelector('.reply-message');
 
-  function findMatches(WordToMatch, restaurant) {
-    return restaurant.filter((place) => {
-      const regex = new RegExp(WordToMatch, 'gi'); // gi means all regular expression matches
-      return place.city.match(regex) || place.name.match(regex) || place.category.match(regex);
+  const request = await fetch('/api');
+  const data = await request.json();
+
+  form.addEventListener('submit', async (event) => {
+    targetList.innerText = '';
+
+    event.preventDefault();
+    console.log('submit fired', search.value);
+    // take the first five matches from your user's query string which also have the required geocoded_column_1 values
+    const filtered = data.filter((record) => record.zip.includes(search.value) && record.geocoded_column_1);
+    const topFive = filtered.slice(0, 5);
+
+    if (topFive.length < 1) {
+      replyMessage.classList.add('box');
+      replyMessage.innerText = 'No matches found';
+    } else {
+      console.table(topFive); // done
+    }
+
+    topFive.forEach((item) => {
+      // geocoded_column_1 is a table column in the api
+      const longLat = item.geocoded_column_1.coordinates;
+      // latitude and longitude positions are reversed in the array you receive
+      console.log('markerLongLat', longLat[0], longLat[1]);
+      const marker = L.marker([longLat[1], longLat[0]]).addTo(mapObjectFromFunction);
+
+      // creating list items
+      const appendItem = document.createElement('li');
+      appendItem.classList.add('block'); // block is from bulma
+      appendItem.classList.add('list-item');
+      // this is the innerHTML for the appendItem. ${} is using javascript within quotes
+      appendItem.innerHTML = `<div class="list-header is-size-5">${item.name}</div><address class="is-size-6">${item.address_line_1}</address>`;
+      targetList.append(appendItem);
     });
-  }
 
-  function displayMatches(event) {
-    const matchArray = findMatches(event.target.value, restaurant);
-    const html = matchArray.map((place) => { // creating a box. inside box, set each item
-      console.log(place);
-      return `
-              <li> 
-                  <div class="labels">
-                      <span class="name">${place.name}</span> 
-                      <br>
-                      <span class="category">${place.category}</span>
-                      <br>
-                      <span class="address">${place.address_line_1}</span>
-                      <br>
-                      <span class="city">${place.city}</span>
-                      <br>
-                      <span class="zip">${place.zip}</span>
-                  </div>
-              </li> 
-          `; // span is an inline container
-    }).join('');
-    suggestions.innerHTML = html; // returns inner HTML text content
-  }
-
-  search.addEventListener('keyup', async (event) => { // keyup is stop typing
-    displayMatches(event);
+    const {coordinates} = topFive[0]?.geocoded_column_1;
+    console.log('viewSet coords]', coordinates);
+    mapObjectFromFunction.panTo([coordinates[1], coordinates[0], 0]);
   });
-
-  search.addEventListener('change', displayMatches); // checking for changes on input field
 }
 
 async function windowActions() {
@@ -67,12 +70,3 @@ async function windowActions() {
 }
 
 window.onload = windowActions;
-
-// in windowActions?
-  // const request = await fetch(endpoint); // request fetches the api; await pauses async function execution until a Promise is addressed
-  // const restaurant = await request.json(); //restaurants is request formatted to json; empty array
-  
-  // // const form = document.querySelector('#search-form');
-  // const search = document.querySelector("#search"); // document is html page
-  // // const targetList = document.querySelector('.target-list');
-  // const suggestions = document.querySelector('.suggestions');
